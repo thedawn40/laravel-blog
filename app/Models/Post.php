@@ -8,7 +8,7 @@ class Post{
             'title'=> 'judul post pertama',
             'slug'=> 'post-pertama',
             'author'    => 'luthfi',
-            'body'  => 'lorem ipsum'
+            'body'  => 'lorem ipsums'
         ]
         ];
 
