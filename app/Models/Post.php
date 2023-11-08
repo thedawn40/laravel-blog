@@ -2,22 +2,21 @@
 
 namespace App\Models;
 
-class Post{
-    private static $blog_posts = [
-        [
-            'title'=> 'judul post pertama',
-            'slug'=> 'post-pertama',
-            'author'    => 'luthfi',
-            'body'  => 'lorem ipsums'
-        ]
-        ];
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-        public static function all(){
-            return collect(self::$blog_posts);
-        }
+class Post extends Model
+{
+    use HasFactory;
 
-        public static function find($slug){
-            $posts = static::all();
-            return $posts->firstWhere('slug', $slug);
-        }
+    // protected $fillable = ['title','excerpt','body'];
+    protected $guarded = ['id'];
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
